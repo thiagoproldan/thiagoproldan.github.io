@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #ffffff;
+    --color-text: #111111;
+    --toggle-bg: #e2e2e2;
+    --toggle-knob: #ffffff;
+    --toggle-icon: "☀️";
+
+    --transition-speed: 0.3s;
+}
+
+html.dark {
+    --color-bg: #0d0d0d;
+    --color-text: #f0f0f0;
+    --toggle-bg: #444444;
+    --toggle-knob: #0d0d0d;
+    --toggle-icon: "🌙";
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color var(--transition-speed),
+    color var(--transition-speed);
+}
+
+main {
+    text-align: center;
+}
+
+main h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 30px;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--toggle-bg);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    padding: 0;
+}
+
+.theme-toggle__icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--toggle-knob);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-speed),
+    background-color var(--transition-speed);
+    pointer-events: none;
+}
+
+.theme-toggle__icon::after {
+    content: var(--toggle-icon);
+    font-size: 14px;
+}
+
+html.dark .theme-toggle__icon {
+    transform: translateX(26px);
+}
